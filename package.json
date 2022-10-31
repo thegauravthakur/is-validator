@@ -1,0 +1,17 @@
+{
+  "name": "is-validator",
+  "version": "1.0.0",
+  "description": "A runtime validator for JavaScript",
+  "main": "./dist/index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "prettier": "^2.7.1",
+    "tsc": "^2.0.4",
+    "typescript": "^4.8.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gaurav Thakur",
+  "license": "MIT"
+}
