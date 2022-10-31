@@ -1,7 +1,8 @@
 {
-  "name": "is-validator",
+  "name": "@gauravcodes/is-validator",
   "version": "1.0.0",
   "description": "A runtime validator for JavaScript",
+  "repository": "https://github.com/thegauravthakur/is-validator",
   "main": "./dist/index.js",
   "dependencies": {},
   "devDependencies": {
