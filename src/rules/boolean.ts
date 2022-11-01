@@ -13,7 +13,7 @@ export const booleanRules: Record<
         const result: Result = { passed: true };
         if (value) {
             result.passed = false;
-            result.error = value + ' is not falsy';
+            result.error = 'value is not falsy';
         }
         return result;
     },
@@ -21,7 +21,7 @@ export const booleanRules: Record<
         const result: Result = { passed: true };
         if (!value) {
             result.passed = false;
-            result.error = value + ' is not truly';
+            result.error = 'value is not truly';
         }
         return result;
     },
