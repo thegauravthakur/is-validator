@@ -1,6 +1,6 @@
 {
   "name": "@gauravcodes/is-validator",
-  "version": "1.0.20",
+  "version": "1.1.0",
   "description": "A runtime validator for JavaScript",
   "repository": "https://github.com/thegauravthakur/is-validator",
   "main": "dist/bundle.js",

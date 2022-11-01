@@ -1,11 +1,18 @@
-import { numberRules, stringRules, StringRules, NumberRules } from './rules';
+import {
+    numberRules,
+    stringRules,
+    StringRules,
+    NumberRules,
+    BooleanRules,
+    booleanRules,
+} from './rules';
 import { Types, TypeMapping } from './constants/types';
 
 type Schema = Record<string, Validator<Types>>;
 
 interface Validator<T> {
     type: T;
-    rules: Partial<StringRules> | Partial<NumberRules>;
+    rules: Partial<StringRules> | Partial<NumberRules> | Partial<BooleanRules>;
 }
 
 export const is = {
@@ -14,6 +21,9 @@ export const is = {
     },
     number(rules: Partial<NumberRules> = {}): Validator<Types.number> {
         return { type: Types.number, rules } as const;
+    },
+    boolean(rules: Partial<BooleanRules> = {}): Validator<Types.boolean> {
+        return { type: Types.boolean, rules } as const;
     },
 };
 
@@ -50,6 +60,19 @@ export function validateSchema(
                 const result = numberRules[rule as keyof NumberRules](
                     values[key] as number,
                     rules[rule as keyof NumberRules]
+                );
+                if (!result.passed && !!result.error) {
+                    if (!finalResult[key]) finalResult[key] = [];
+                    finalResult[key].push(result.error);
+                }
+            }
+        }
+        if (schema[key].type === Types.boolean) {
+            const rules = schema[key].rules as BooleanRules;
+            for (const rule in rules) {
+                const result = booleanRules[rule as keyof BooleanRules](
+                    values[key] as boolean,
+                    rules[rule as keyof BooleanRules]
                 );
                 if (!result.passed && !!result.error) {
                     if (!finalResult[key]) finalResult[key] = [];

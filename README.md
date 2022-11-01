@@ -1,5 +1,5 @@
 # is-validator
-A runtime validator and a schema generator with the final schema as a JSON object which could be easily shared and stored
+A zero dependency, light weight runtime validator and a schema generator with the final schema as a JSON object which could be easily shared and stored
 
 ## Guide
 ### Generate a Schema
@@ -85,6 +85,8 @@ const result = validateSchema(PersonSchema, person, { shouldThrowError: true });
     - minLength
     - maxLength
     - isEmail
+    - isURL
+    - regex
     - endsWith
     - startsWith
 
@@ -93,9 +95,14 @@ const result = validateSchema(PersonSchema, person, { shouldThrowError: true });
     - isNegative
     - lessThan
     - moreThan
+
+3. is.boolean()
+    - isTruly
+    - isFalsy
     
 ### Todo
 - [ ] Add support for more data type e.g. boolean, enums etc
 - [ ] Add support for more rules
+  - [ ] Add support for making properties optional
 - [ ] Add support for initializing the schema object when received schema from another source 
 

@@ -1,12 +1,14 @@
 import { Result, BaseRules, Validator } from './base';
-import { emailRegex } from '../constants/regex';
+import { emailRegex, urlRegex } from '../constants/regex';
 
 export interface StringRules extends BaseRules {
     minLength: number;
     maxLength: number;
     isEmail: boolean;
+    isURL: boolean;
     endsWith: string;
     statsWith: string;
+    regex: RegExp;
 }
 
 export const stringRules: Record<keyof StringRules, Validator<string, any>> = {
@@ -30,7 +32,23 @@ export const stringRules: Record<keyof StringRules, Validator<string, any>> = {
         const result: Result = { passed: true };
         if (!emailRegex.test(value)) {
             result.passed = false;
-            result.error = 'email is not valid';
+            result.error = value + ' is not a valid email';
+        }
+        return result;
+    },
+    regex(value: string, regex: RegExp): Result {
+        const result: Result = { passed: true };
+        if (!regex.test(value)) {
+            result.passed = false;
+            result.error = "Regex doesn't pass";
+        }
+        return result;
+    },
+    isURL(value: string): Result {
+        const result: Result = { passed: true };
+        if (!urlRegex.test(value)) {
+            result.passed = false;
+            result.error = value + ' is not a valid URL';
         }
         return result;
     },
