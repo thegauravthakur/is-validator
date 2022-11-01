@@ -1,17 +1,28 @@
 {
   "name": "@gauravcodes/is-validator",
-  "version": "1.0.1",
+  "version": "1.0.20",
   "description": "A runtime validator for JavaScript",
   "repository": "https://github.com/thegauravthakur/is-validator",
-  "main": "./dist/index.js",
+  "main": "dist/bundle.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "dependencies": {},
   "devDependencies": {
     "prettier": "^2.7.1",
+    "rimraf": "^3.0.2",
+    "ts-loader": "^9.4.1",
     "tsc": "^2.0.4",
-    "typescript": "^4.8.4"
+    "typescript": "^4.8.4",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rimraf dist && tsc && webpack --mode production",
+    "build:publish": "npm run build && npm publish --access public"
   },
   "author": "Gaurav Thakur",
   "license": "MIT"

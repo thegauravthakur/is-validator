@@ -1,6 +1,5 @@
-import { numberRules, stringRules, StringRules } from './rules';
-import { NumberRules } from './rules/number';
-import { TypeMapping, Types } from './constants/types';
+import { numberRules, stringRules, StringRules, NumberRules } from './rules';
+import { Types, TypeMapping } from './constants/types';
 
 type Schema = Record<string, Validator<Types>>;
 
